@@ -21,6 +21,7 @@ public:
         _size = size;
         _data.resize(size * size);
         _b.resize(size);
+
         // variables.resize(size);
         // for (int i = 0; i < size; i++)
         // {
@@ -145,4 +146,36 @@ std::ostream &operator<<(std::ostream &os, const Matrix &mt)
         // os << mt(i);
     }
     return os;
+}
+
+void print_matrix(Matrix matrix, int n, int l)
+{
+    for (int i = 0; i < l; i++)
+    {
+        for (int j = 0; j < l; j++)
+        {
+            printf("%10.3e", matrix(i, j));
+        }
+        // printf("%10.3e", matrix._b[i]);
+        printf("\n");
+    }
+}
+
+Matrix multiplication(Matrix a, Matrix b, int size)
+{
+    Matrix answer;
+    answer = Matrix(size);
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            double elem = 0;
+            for (int k = 0; k < size; k++)
+            {
+                elem += a(i, k) * b(k, j);
+            }
+            answer(i, j) = elem;
+        }
+    }
+    return answer;
 }

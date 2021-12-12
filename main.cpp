@@ -7,19 +7,6 @@
 #include "quasi_triangular.h"
 using namespace std;
 
-void print_matrix(Matrix matrix, int n, int l)
-{
-    for (int i = 0; i < l; i++)
-    {
-        for (int j = 0; j < l; j++)
-        {
-            printf("%10.3e", matrix(i, j));
-        }
-        // printf("%10.3e", matrix._b[i]);
-        printf("\n");
-    }
-}
-
 int main(int argc, char **argv)
 {
     Matrix matrix;
@@ -50,6 +37,7 @@ int main(int argc, char **argv)
         }
     }
     print_matrix(matrix, atoi(argv[1]), atoi(argv[2]));
+    printf("\n\n");
     std::vector<double> x;
     x.resize(atoi(argv[1]));
 
