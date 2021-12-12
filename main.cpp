@@ -1,19 +1,19 @@
 #include <iostream>
 #include <vector>
-#include <iostream>
 #include "matrix.h"
 #include "function.h"
 #include <cmath>
 #include <chrono>
+#include "quasi_triangular.h"
 using namespace std;
 
 void print_matrix(Matrix matrix, int n, int l)
 {
     for (int i = 0; i < l; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < l; j++)
         {
-            cout << printf("%10.3e", matrix(i, j));
+            printf("%10.3e", matrix(i, j));
         }
         // printf("%10.3e", matrix._b[i]);
         printf("\n");
@@ -52,6 +52,8 @@ int main(int argc, char **argv)
     print_matrix(matrix, atoi(argv[1]), atoi(argv[2]));
     std::vector<double> x;
     x.resize(atoi(argv[1]));
+
+    with_reflections_to_quasi_triangular(matrix, atoi(argv[1]));
     // freopen("CON","w",stdout);
     //  std::cout << matrix;
     //  std::cout << "----------------------------------------------------------------" << std::endl;
