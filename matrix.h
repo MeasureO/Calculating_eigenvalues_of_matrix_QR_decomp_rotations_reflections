@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 class Matrix
 {
 private:
@@ -140,25 +141,66 @@ std::ostream &operator<<(std::ostream &os, const Matrix &mt)
     {
         for (int j = 0; j < mt._size; j++)
         {
-            os << std::setw(10) << mt._data[i * mt._size + j] << " ";
+            os << std::setprecision(3) << std::setw(10) << mt._data[i * mt._size + j] << " ";
+            // std::setw(10) <<
         }
-        os << std::setw(10) << mt._b[i] << std::endl;
-        // os << mt(i);
+        os << std::endl;
+        // os << std::setw(10) << mt._b[i] << std::endl;
+        //  os << mt(i);
     }
     return os;
 }
 
 void print_matrix(Matrix matrix, int n, int l)
 {
+    printf("[");
     for (int i = 0; i < l; i++)
     {
+        printf("[");
         for (int j = 0; j < l; j++)
         {
-            printf("%10.3e", matrix(i, j));
+            printf("%2.2f", matrix(i, j));
+            if (j != l - 1)
+                printf(",");
         }
         // printf("%10.3e", matrix._b[i]);
-        printf("\n");
+        printf("]");
+        if (i != l - 1)
+            printf(",");
     }
+    printf("]");
+    printf("\n");
+}
+
+Matrix to_identity(Matrix &matrix, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (i == j)
+            {
+                matrix(i, j) = 1;
+            }
+            else
+            {
+                matrix(i, j) = 0;
+            }
+        }
+    }
+    return matrix;
+}
+
+Matrix transpose(Matrix matrix, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            std::swap(matrix(i, j), matrix(j, i));
+        }
+    }
+    return matrix;
 }
 
 Matrix multiplication(Matrix a, Matrix b, int size)

@@ -5,6 +5,7 @@
 #include <cmath>
 #include <chrono>
 #include "quasi_triangular.h"
+#include "qr_with_rotations.h"
 using namespace std;
 
 int main(int argc, char **argv)
@@ -40,8 +41,13 @@ int main(int argc, char **argv)
     printf("\n\n");
     std::vector<double> x;
     x.resize(atoi(argv[1]));
+    // printf("/////////////////////////////////////////////////////\n");
+    matrix = with_reflections_to_quasi_triangular(matrix, atoi(argv[1]));
+    // cout << matrix;
+    //  printf("//////////////////////////////////////////////////////////\n");
+    //  printf("START OF ROTATIONS\n");
+    qr_rotations(matrix, atoi(argv[1]));
 
-    with_reflections_to_quasi_triangular(matrix, atoi(argv[1]));
     // freopen("CON","w",stdout);
     //  std::cout << matrix;
     //  std::cout << "----------------------------------------------------------------" << std::endl;

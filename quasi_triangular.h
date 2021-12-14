@@ -49,13 +49,13 @@ Matrix with_reflections_to_quasi_triangular(Matrix matrix, int size)
         {
             a.push_back(matrix(i, k - 1));
         }
-        for (int i = 0; i < size - k; i++)
-        {
-            printf("%10.3e", a[i]);
-            printf(" ");
-        }
-        printf("norm: ");
-        printf("%10.3e", vector_norm(a));
+        // for (int i = 0; i < size - k; i++)
+        // {
+        //     printf("%10.3e", a[i]);
+        //     printf(" ");
+        // }
+        // printf("norm: ");
+        // printf("%10.3e", vector_norm(a));
         if (k != size - 1)
         {
             for (int i = 0; i < size - k; i++)
@@ -75,18 +75,18 @@ Matrix with_reflections_to_quasi_triangular(Matrix matrix, int size)
         // {
         //     x.push_back(1);
         // }
-        printf("\n");
+        // printf("\n");
 
         double x_norm = vector_norm(x);
         for (int i = 0; i < size - k; i++)
         {
             x[i] = x[i] / x_norm;
         }
-        for (int i = 0; i < size - k; i++)
-        {
-            printf("%10.3e", x[i]);
-        }
-        printf("\n\n");
+        // for (int i = 0; i < size - k; i++)
+        // {
+        //     printf("%10.3e", x[i]);
+        // }
+        // printf("\n\n");
 
         for (int i = 0; i < size - k; i++)
         {
@@ -102,20 +102,20 @@ Matrix with_reflections_to_quasi_triangular(Matrix matrix, int size)
                 }
             }
         }
-        print_matrix(U, size, size);
+        // print_matrix(U, size, size);
 
-        printf("---------------------------------------------------\n");
+        // printf("---------------------------------------------------\n");
         matrix = multiplication(U, matrix, size);
-        print_matrix(matrix, size, size);
-        printf("--------------------------------------------\n");
+        // print_matrix(matrix, size, size);
+        // printf("--------------------------------------------\n");
         matrix = multiplication(matrix, U, size);
-        print_matrix(matrix, size, size);
-        printf("THE END OF STEP\n");
-        printf("-----------------------------------------\n");
+        // print_matrix(matrix, size, size);
+        // printf("THE END OF STEP\n");
+        // printf("-----------------------------------------\n");
 
         x.clear();
         a.clear();
-        printf("\n");
+        // printf("\n");
     }
 
     return matrix;
