@@ -1,0 +1,2 @@
+# Calculating_eigenvalues_of_matrix_QR_decomp_rotations_reflections
+Вычисление собственных значений матрицы с помощью QR разложения методоами вращений/отражений
